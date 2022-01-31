@@ -11,8 +11,8 @@ services:
     image: 89174398458/foodgram
     restart: always
     volumes:
-      - static_value:/code/static/
-      - media_value:/code/media/
+      - static_value:/foodgram/static/
+      - media_value:/foodgram/media/
     depends_on:
       - db
     env_file:
