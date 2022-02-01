@@ -35,6 +35,16 @@ class IngredientAmountSerializer(serializers.ModelSerializer):
             )
         ]
 
+    def validate(self, data):
+        amount = self.initial_data.get('amount')
+        if int(amount) <= 0:
+            raise serializers.ValidationError(
+                'Убедитесь, что значение количества'
+                'ингредиента больше 0'
+            )
+        data['amount'] = amount
+        return data
+
 
 class RecipeSerializer(serializers.ModelSerializer):
     image = Base64ImageField()
@@ -82,11 +92,6 @@ class RecipeSerializer(serializers.ModelSerializer):
                 raise serializers.ValidationError('Ингридиенты должны '
                                                   'быть уникальными')
             ingredient_list.append(ingredient)
-            if int(ingredient_item.get('amount')) <= 0:
-                raise serializers.ValidationError({
-                    'ingredients': ('Убедитесь, что значение количества '
-                                    'ингредиента больше 0')
-                })
         data['ingredients'] = ingredients
         return data
 
