@@ -72,7 +72,7 @@ class RecipeSerializer(serializers.ModelSerializer):
             raise serializers.ValidationError(
                 'Нужен хоть один ингридиент для рецепта'
             )
-        if int(self.initial_data.get('cooking_time')) < 1:
+        if float(self.initial_data.get('cooking_time')) < 1.0:
             raise serializers.ValidationError(
                 'Минимальное время приготовления 1 минута')
         ingredient_list = []
@@ -83,7 +83,7 @@ class RecipeSerializer(serializers.ModelSerializer):
                 raise serializers.ValidationError('Ингридиенты должны '
                                                   'быть уникальными')
             ingredient_list.append(ingredient)
-            if int(ingredient_item.get('amount')) <= 0:
+            if float(ingredient_item.get('amount')) <= 0.0:
                 raise serializers.ValidationError(
                     'Убедитесь, что значение количества '
                     'ингредиента больше 0'
