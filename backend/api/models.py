@@ -93,11 +93,8 @@ class IngredientAmount(models.Model):
         on_delete=models.CASCADE,
         verbose_name='Рецепт',
     )
-    amount = models.PositiveSmallIntegerField(
-        validators=(
-            validators.MinValueValidator(
-                1, message='Минимальное количество ингридиентов 1'),),
-        verbose_name='Количество',
+    amount = models.FloatField(
+        verbose_name='Количество'
     )
 
     class Meta:
