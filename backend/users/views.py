@@ -1,6 +1,7 @@
-from api.models import Follow, User
+from api.models import Follow
 from api.pagination import LimitPageNumberPagination
 from api.serializers import FollowSerializer
+from .models import User
 from djoser.views import UserViewSet
 from rest_framework import status
 from rest_framework.decorators import action
