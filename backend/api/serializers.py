@@ -72,8 +72,8 @@ class RecipeSerializer(serializers.ModelSerializer):
             raise serializers.ValidationError({
                 'ingredients': 'Нужен хоть один ингридиент для рецепта'})
         if int(self.initial_data.get('cooking_time')) < 1:
-            raise serializers.ValidationError({
-                'Минимальное время приготовления 1 минута'})
+            raise serializers.ValidationError(
+                'Минимальное время приготовления 1 минута')
         ingredient_list = []
         for ingredient_item in ingredients:
             ingredient = get_object_or_404(Ingredient,
