@@ -90,6 +90,9 @@ sudo docker-compose up -d --build
     ```
     sudo docker-compose exec backend python manage.py migrate --noinput
     ```
+    ```
+    sudo docker-compose exec backend python manage.py migrate --noinput
+    ```
     - Загрузите ингридиенты  в базу данных (необязательно):  
     *Если файл не указывать, по умолчанию выберется ingredients.json*
     ```
