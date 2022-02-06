@@ -3,11 +3,11 @@ from django.db import models
 
 
 class User(AbstractUser):
-    email = models.EmailField(
-        max_length=150, unique=True, verbose_name='Почта'
-    )
     username = models.CharField(
         max_length=150, unique=True, verbose_name='Имя пользователя'
+    )
+    email = models.EmailField(
+        max_length=150, unique=True, verbose_name='Почта'
     )
     first_name = models.CharField(
         max_length=150, verbose_name='Имя'
