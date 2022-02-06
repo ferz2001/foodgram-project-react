@@ -79,8 +79,8 @@ class Recipe(models.Model):
     def save(self, *args, **kwargs):
         if not self.slug:
             self.slug = slugify(self.name)
-            return super(Tag, self).save(*args, **kwargs)
-        return super(Tag, self).save(*args, **kwargs)
+            return super(Recipe, self).save(*args, **kwargs)
+        return super(Recipe, self).save(*args, **kwargs)
 
 
 class IngredientAmount(models.Model):
