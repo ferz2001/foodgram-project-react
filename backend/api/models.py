@@ -41,7 +41,9 @@ class Tag(models.Model):
         return self.name
 
     def save(self, *args, **kwargs):
-        self.slug = slugify(self.name)
+        if not self.slug:
+            self.slug = slugify(self.name)
+            return super(Tag, self).save(*args, **kwargs)
         return super(Tag, self).save(*args, **kwargs)
 
 
@@ -75,7 +77,9 @@ class Recipe(models.Model):
         verbose_name_plural = 'Рецепты'
 
     def save(self, *args, **kwargs):
-        self.slug = slugify(self.name)
+        if not self.slug:
+            self.slug = slugify(self.name)
+            return super(Tag, self).save(*args, **kwargs)
         return super(Tag, self).save(*args, **kwargs)
 
 
