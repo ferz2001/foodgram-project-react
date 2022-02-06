@@ -4,9 +4,11 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 SECRET_KEY = 'django-insecure-hs0ibmhm_51@a9ei@15hmsrazxv97##_cwiv2v^u&#67vi46&_'
 
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = ['*']
+
+AUTH_USER_MODEL = 'users.User'
 
 INSTALLED_APPS = [
     'api',
@@ -119,5 +121,3 @@ DJOSER = {
         'user_list': ('rest_framework.permissions.AllowAny',)
     }
 }
-
-AUTH_USER_MODEL = 'users.User'
