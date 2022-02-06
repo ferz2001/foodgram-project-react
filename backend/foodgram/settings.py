@@ -102,8 +102,7 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 CORS_ORIGIN_ALLOW_ALL = True
 CORS_URLS_REGEX = r'^/api/.*$'
 
-CSRF_TRUSTED_ORIGINS = ['http://51.250.25.203',
-                        'https://51.250.25.203']
+CSRF_TRUSTED_ORIGINS = ['http://51.250.25.203']
 
 REST_FRAMEWORK = {
     'DEFAULT_PERMISSION_CLASSES': [
