@@ -29,7 +29,7 @@ class Tag(models.Model):
                             verbose_name='Название тега')
     color = models.CharField(max_length=7, unique=True, default='#ff0000',
                              verbose_name='Цвет в HEX')
-    slug = models.SlugField(max_length=200, unique=True, required=False,
+    slug = models.SlugField(max_length=200, unique=True, blank=True, null=True,
                             verbose_name='Уникальный слаг')
 
     class Meta:
@@ -66,7 +66,7 @@ class Recipe(models.Model):
     )
     cooking_time = models.PositiveSmallIntegerField(
         verbose_name='Время приготовления')
-    slug = models.SlugField(max_length=200, unique=True, required=False,
+    slug = models.SlugField(max_length=200, unique=True, blank=True, null=True,
                             verbose_name='Уникальный слаг')
 
     class Meta:
