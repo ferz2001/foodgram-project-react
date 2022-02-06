@@ -13,7 +13,7 @@ class IngredientAdmin(admin.ModelAdmin):
 
 
 class RecipeAdmin(admin.ModelAdmin):
-    list_display = ('name', 'author', 'count_favorites')
+    list_display = ('name', 'author', 'count_favorites', 'slug')
     list_filter = ('author', 'name', 'tags')
 
     def count_favorites(self, obj):

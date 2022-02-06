@@ -2,6 +2,8 @@ from django.db import models
 
 from users.models import User
 
+from slugify import slugify
+
 
 class Ingredient(models.Model):
     name = models.CharField(max_length=200,
@@ -23,22 +25,9 @@ class Ingredient(models.Model):
 
 
 class Tag(models.Model):
-    BLUE = '#0000FF'
-    ORANGE = '#FFA500'
-    GREEN = '#008000'
-    PURPLE = '#800080'
-    YELLOW = '#FFFF00'
-
-    COLOR_CHOICES = [
-        (BLUE, 'Синий'),
-        (ORANGE, 'Оранжевый'),
-        (GREEN, 'Зеленый'),
-        (PURPLE, 'Фиолетовый'),
-        (YELLOW, 'Желтый'),
-    ]
     name = models.CharField(max_length=200, unique=True,
                             verbose_name='Название тега')
-    color = models.CharField(max_length=7, unique=True, choices=COLOR_CHOICES,
+    color = models.CharField(max_length=7, unique=True, default='#ff0000',
                              verbose_name='Цвет в HEX')
     slug = models.SlugField(max_length=200, unique=True,
                             verbose_name='Уникальный слаг')
@@ -50,6 +39,10 @@ class Tag(models.Model):
 
     def __str__(self):
         return self.name
+
+    def save(self, *args, **kwargs):
+        self.slug = slugify(self.name)
+        return super(Tag, self).save(*args, **kwargs)
 
 
 class Recipe(models.Model):
@@ -73,11 +66,17 @@ class Recipe(models.Model):
     )
     cooking_time = models.PositiveSmallIntegerField(
         verbose_name='Время приготовления')
+    slug = models.SlugField(max_length=200, unique=True,
+                            verbose_name='Уникальный слаг')
 
     class Meta:
         ordering = ['-id']
         verbose_name = 'Рецепт'
         verbose_name_plural = 'Рецепты'
+
+    def save(self, *args, **kwargs):
+        self.slug = slugify(self.name)
+        return super(Tag, self).save(*args, **kwargs)
 
 
 class IngredientAmount(models.Model):
