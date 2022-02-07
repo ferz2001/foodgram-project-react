@@ -1,8 +1,9 @@
 from django.contrib import admin
 from django.contrib.admin import TabularInline
 from django.utils.safestring import mark_safe
-from .models import (Cart, Favorite, Ingredient,
-                     Recipe, Tag, Follow, IngredientAmount)
+
+from .models import (Cart, Favorite, Follow, Ingredient, IngredientAmount,
+                     Recipe, Tag)
 
 
 class IngredientInline(TabularInline):

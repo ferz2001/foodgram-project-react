@@ -1,8 +1,6 @@
 from django.db import models
-
-from users.models import User
-
 from slugify import slugify
+from users.models import User
 
 
 class Ingredient(models.Model):
