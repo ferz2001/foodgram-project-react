@@ -1,4 +1,5 @@
 from django.db import models
+from django.db.models import DateTimeField
 
 from users.models import User
 
@@ -82,6 +83,9 @@ class Recipe(models.Model):
             return super(Recipe, self).save(*args, **kwargs)
         return super(Recipe, self).save(*args, **kwargs)
 
+    def __str__(self):
+        return self.name
+
 
 class IngredientAmount(models.Model):
     ingredient = models.ForeignKey(
@@ -106,6 +110,10 @@ class IngredientAmount(models.Model):
             models.UniqueConstraint(fields=['ingredient', 'recipe'],
                                     name='unique ingredients recipe')
         ]
+
+    def __str__(self):
+        return (f'{self.ingredient} {self.amount} '
+                f'{self.ingredient.measurement_unit}')
 
 
 class Favorite(models.Model):
