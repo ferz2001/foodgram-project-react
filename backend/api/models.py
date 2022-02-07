@@ -1,5 +1,4 @@
 from django.db import models
-from django.db.models import DateTimeField
 
 from users.models import User
 
